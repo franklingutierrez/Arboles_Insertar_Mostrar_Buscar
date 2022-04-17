@@ -1,3 +1,6 @@
 # ninja log v5
-1	483	6719157638826186	CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/main.cpp.obj	7d9d2c124a1fbd7c
-487	794	6719157641906109	Arboles_Insertar_Mostrar_Buscar.exe	b4d5902c6676e86e
+683	1314	6719202469796176	Arboles_Insertar_Mostrar_Buscar.exe	dd901b29d5650e92
+5	182	6719204929818309	build.ninja	17095de5a17b20cb
+3	680	6719202463587185	CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/arboles.cpp.obj	bc6517a7206d4ffb
+1	376	6719205067517061	CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/arboles.cpp.obj	39e8540c283e17a2
+379	524	6719205068978780	Arboles_Insertar_Mostrar_Buscar.exe	9fca4e427fc87d86

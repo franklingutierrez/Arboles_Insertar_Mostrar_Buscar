@@ -49,8 +49,8 @@ cmake_ninja_workdir = C$:/Users/guiratec/Downloads/TAREA2/Arboles_Insertar_Mostr
 
 build cmake_object_order_depends_target_Arboles_Insertar_Mostrar_Buscar: phony || CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir
 
-build CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/main.cpp.obj: CXX_COMPILER__Arboles_Insertar_Mostrar_Buscar_Debug C$:/Users/guiratec/Downloads/TAREA2/Arboles_Insertar_Mostrar_Buscar/main.cpp || cmake_object_order_depends_target_Arboles_Insertar_Mostrar_Buscar
-  DEP_FILE = CMakeFiles\Arboles_Insertar_Mostrar_Buscar.dir\main.cpp.obj.d
+build CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/arboles.cpp.obj: CXX_COMPILER__Arboles_Insertar_Mostrar_Buscar_Debug C$:/Users/guiratec/Downloads/TAREA2/Arboles_Insertar_Mostrar_Buscar/arboles.cpp || cmake_object_order_depends_target_Arboles_Insertar_Mostrar_Buscar
+  DEP_FILE = CMakeFiles\Arboles_Insertar_Mostrar_Buscar.dir\arboles.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Arboles_Insertar_Mostrar_Buscar.dir
   OBJECT_FILE_DIR = CMakeFiles\Arboles_Insertar_Mostrar_Buscar.dir
@@ -65,7 +65,7 @@ build CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/main.cpp.obj: CXX_COMPILER_
 #############################################
 # Link the executable Arboles_Insertar_Mostrar_Buscar.exe
 
-build Arboles_Insertar_Mostrar_Buscar.exe: CXX_EXECUTABLE_LINKER__Arboles_Insertar_Mostrar_Buscar_Debug CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/main.cpp.obj
+build Arboles_Insertar_Mostrar_Buscar.exe: CXX_EXECUTABLE_LINKER__Arboles_Insertar_Mostrar_Buscar_Debug CMakeFiles/Arboles_Insertar_Mostrar_Buscar.dir/arboles.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Arboles_Insertar_Mostrar_Buscar.dir
