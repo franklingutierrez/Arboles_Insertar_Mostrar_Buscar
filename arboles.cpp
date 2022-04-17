@@ -20,6 +20,7 @@ void insertarNodo(Nodo *&, int);
 void mostrarArbol(Nodo *, int);
 
 bool busqueda(Nodo *, int);
+void preOrden(Nodo *);
 
 Nodo *arbol = NULL;
 
@@ -36,7 +37,8 @@ void menu() {
         cout << "l. Insertar un nuevo nodo" << endl;
         cout << "2. Mostrar el arbol completo" << endl;
         cout << "3. Buscar un elemento en el arbol" << endl;
-        cout << "4. Salir" << endl;
+        cout << "4. Recorrer el arbol en PreOrden" << endl;
+        cout << "5. Salir" << endl;
         cout << "Opcion:";
         cin >> opcion;
         switch (opcion) {
@@ -64,9 +66,14 @@ void menu() {
                 cout << "\n";
                 system("pause");
                 break;
+            case 4:
+                cout<<"\nRecorrido en PreOrden: ";
+                preOrden(arbol);
+                cout<<"\n\n";
+                system("pause");
         }
         system("cls");
-    } while (opcion != 4);
+    } while (opcion != 5);
 }
 
 //funcion para crear un nuevo nodo
@@ -117,5 +124,17 @@ bool busqueda(Nodo *arbol, int n) {
         return busqueda(arbol->izq, n);
     } else {
         return busqueda(arbol->der, n);
+    }
+}
+
+//Funcion para rrecorrido en profundidad - PreOrden
+void preOrden(Nodo *arbol){
+    if(arbol == NULL){ //Si el arbol esta vacio
+        return;
+    }
+    else{
+        cout<<arbol->dato<<" - ";
+        preOrden(arbol->izq);
+        preOrden(arbol->der);
     }
 }
