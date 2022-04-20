@@ -18,7 +18,7 @@ void insertarNodo(Nodo *&, int);
 void mostrarArbol(Nodo *, int);
 bool busqueda(Nodo *, int);
 void preOrden(Nodo *);
-void InOrden(Nodo *);
+void inOrden(Nodo *);
 
 Nodo *arbol = NULL;
 
