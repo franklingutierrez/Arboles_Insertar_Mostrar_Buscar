@@ -14,13 +14,11 @@ struct Nodo {
 void menu();
 
 Nodo *crearNodo(int);
-
 void insertarNodo(Nodo *&, int);
-
 void mostrarArbol(Nodo *, int);
-
 bool busqueda(Nodo *, int);
 void preOrden(Nodo *);
+void InOrden(Nodo *);
 
 Nodo *arbol = NULL;
 
@@ -38,7 +36,8 @@ void menu() {
         cout << "2. Mostrar el arbol completo" << endl;
         cout << "3. Buscar un elemento en el arbol" << endl;
         cout << "4. Recorrer el arbol en PreOrden" << endl;
-        cout << "5. Salir" << endl;
+        cout << "5. Recorrer el arbol en InOrden" <<endl;
+        cout << "6. Salir" << endl;
         cout << "Opcion:";
         cin >> opcion;
         switch (opcion) {
@@ -71,9 +70,17 @@ void menu() {
                 preOrden(arbol);
                 cout<<"\n\n";
                 system("pause");
+                break;
+            case 5:
+                cout<<"\nRecorrido en InOrden: ";
+                inOrden(arbol);
+                cout<<"\n\n";
+                system("pause");
+                break;
+
         }
         system("cls");
-    } while (opcion != 5);
+    } while (opcion != 6);
 }
 
 //funcion para crear un nuevo nodo
@@ -136,5 +143,17 @@ void preOrden(Nodo *arbol){
         cout<<arbol->dato<<" - ";
         preOrden(arbol->izq);
         preOrden(arbol->der);
+    }
+}
+
+//Funcion para rrecorrido en profundidad - InOrden
+void inOrden(Nodo *arbol){
+    if(arbol == NULL){
+        return;
+    }
+    else{
+        inOrden(arbol->izq);
+        cout<<arbol->dato<<" - ";
+        inOrden(arbol->der);
     }
 }
