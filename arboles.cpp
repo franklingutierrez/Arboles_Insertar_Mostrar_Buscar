@@ -8,13 +8,14 @@ struct Nodo {
     int dato;
     Nodo *der;
     Nodo *izq;
+    Nodo *padre;
 };
 
 //Prototipos
 void menu();
 
-Nodo *crearNodo(int);
-void insertarNodo(Nodo *&, int);
+Nodo *crearNodo(int, Nodo *);
+void insertarNodo(Nodo *&, int, Nodo *);
 void mostrarArbol(Nodo *, int);
 bool busqueda(Nodo *, int);
 void preOrden(Nodo *);
@@ -46,7 +47,7 @@ void menu() {
             case 1:
                 cout << "\nDigite un numero:";
                 cin >> dato;
-                insertarNodo(arbol, dato); //Insertamos un nuevo nodo
+                insertarNodo(arbol, dato, NULL); //Insertamos un nuevo nodo
                 cout << "\n";
                 system("pause");
                 break;
@@ -92,25 +93,26 @@ void menu() {
 }
 
 //funcion para crear un nuevo nodo
-Nodo *crearNodo(int n) {
+Nodo *crearNodo(int n, Nodo *padre) {
     Nodo *nuevo_nodo = new Nodo();
     nuevo_nodo->dato = n;
     nuevo_nodo->der = NULL;
     nuevo_nodo->izq = NULL;
+    nuevo_nodo->padre = padre;
     return nuevo_nodo;
 }
 
 //Función para insertar eLementos en eL arboL
-void insertarNodo(Nodo *&arbol, int n) {
+void insertarNodo(Nodo *&arbol, int n, Nodo *padre) {
     if (arbol == NULL) { //Si e¿ arboL esta vacio
-        Nodo *nuevo_nodo = crearNodo(n);
+        Nodo *nuevo_nodo = crearNodo(n, padre);
         arbol = nuevo_nodo;
     } else { //Si eL arboL tiene un nodo o mas
         int valorRaiz = arbol->dato; //Obtenemos eL vaLor de La raíz
         if (n < valorRaiz) { //Si eL eLemento es menor a La raiz, insertamos en izq
-            insertarNodo(arbol->izq, n);
+            insertarNodo(arbol->izq, n, arbol);
         } else {//Si el eLemento es mayor a La raíz, insertamos en der
-            insertarNodo(arbol->der, n);
+            insertarNodo(arbol->der, n, arbol);
         }
     }
 }
