@@ -21,6 +21,11 @@ bool busqueda(Nodo *, int);
 void preOrden(Nodo *);
 void inOrden(Nodo *);
 void postOrden(Nodo *);
+void eliminar(Nodo *,int);
+void eliminarNodo(Nodo *);
+Nodo *minimo(Nodo *);
+void reemplazar(Nodo *,Nodo *);
+void destruirNodo(Nodo *);
 
 Nodo *arbol = NULL;
 
@@ -177,5 +182,73 @@ void postOrden(Nodo *arbol){
         postOrden(arbol->izq);
         postOrden(arbol->der);
         cout<<arbol->dato<<" - ";
+    }
+}
+
+//Funcion Eliminar un nodo del arbol
+void eliminar(Nodo *arbol,int n){
+    if(arbol == NULL){ //Si el arbol esta vacio
+        return; //No haces nada
+    }
+    else if(n < arbol->dato){ //Si el valor es menor
+        eliminar(arbol->izq, n); //Busca por la izquierda
+    }
+    else if(n > arbol->dato){//Si el valor es mayor
+        eliminar(arbol->der,n); //Buscar por la derecha
+    }
+    else{ //Si ya encontraste el valor del nodo
+        eliminarNodo(arbol);
+    }
+}
+
+//Funcion para determinar el nodo mas izq posible
+Nodo *minimo(Nodo *arbol){
+    if(arbol == NULL){ //Si el arbol esta vacio
+        return NULL; //retorna nulo
+    }
+    if(arbol ->izq){ //Si tiene hijo izq
+        return minimo(arbol ->izq);//buscamos la parte mas izq posible
+    }
+    else{ //Si no tiene hijo izq
+        return arbol; //retornamos el mismo nodo
+    }
+}
+
+//Funcion para remplazar dos nodos
+void reemplazar(Nodo *arbol, Nodo *nuevoNodo){
+    if(arbol->padre){
+        //arbol->padre hay que asignarle su nuevo hijo
+        if(arbol->dato = arbol->padre->izq->dato){
+            arbol->padre->izq = nuevoNodo;
+        }
+        else if(arbol->dato == arbol->padre->der->dato){
+            arbol->padre->der=nuevoNodo;
+        }
+    }
+    if(nuevoNodo){
+        //Procedemos a asignarle su nuevo padre
+        nuevoNodo->padre = arbol->padre;
+    }
+}
+//Funcion para destruir un nodo
+void destruirNodo(Nodo *nodo){
+    nodo->izq = NULL;
+    nodo->der = NULL;
+    delete nodo;
+}
+//Funcion para eliminar el nodo encontrado
+void eliminarNodo(Nodo *nodoEliminar){
+    if(nodoEliminar ->izq && nodoEliminar ->der){ //Si el nodo tiene hijo izq y hijo der
+        Nodo *menor = minimo(nodoEliminar ->der);
+        nodoEliminar ->dato = menor ->dato;
+        eliminarNodo(menor);
+    }
+    else if(nodoEliminar->izq){ //Si tiene hijo izq
+        reemplazar(nodoEliminar,nodoEliminar->izq);
+        destruirNodo(nodoEliminar);
+    }
+    else if(nodoEliminar->der){ //Si tiene hijo der
+        reemplazar(nodoEliminar,nodoEliminar->der);
+        destruirNodo(nodoEliminar);
     }
 }
