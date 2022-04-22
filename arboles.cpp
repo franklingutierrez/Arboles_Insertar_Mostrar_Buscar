@@ -45,7 +45,8 @@ void menu() {
         cout << "4. Recorrer el arbol en PreOrden" << endl;
         cout << "5. Recorrer el arbol en InOrden" <<endl;
         cout << "6. Recorrer el arbol en PosOrden" <<endl;
-        cout << "7. Salir" << endl;
+        cout << "7. Eliminar un nodo del arbol" <<endl;
+        cout << "8. Salir" << endl;
         cout << "Opcion:";
         cin >> opcion;
         switch (opcion) {
@@ -91,10 +92,17 @@ void menu() {
                 cout<<"\n\n";
                 system("pause");
                 break;
+            case 7:
+                cout<<"\nDigite el numero a eliminar: ";
+                cin>>dato;
+                eliminar(arbol,dato);
+                cout<<"\n\n";
+                system("pause");
+                break;
 
         }
         system("cls");
-    } while (opcion != 7);
+    } while (opcion != 8);
 }
 
 //funcion para crear un nuevo nodo
@@ -218,7 +226,7 @@ Nodo *minimo(Nodo *arbol){
 void reemplazar(Nodo *arbol, Nodo *nuevoNodo){
     if(arbol->padre){
         //arbol->padre hay que asignarle su nuevo hijo
-        if(arbol->dato = arbol->padre->izq->dato){
+        if(arbol->dato == arbol->padre->izq->dato){
             arbol->padre->izq = nuevoNodo;
         }
         else if(arbol->dato == arbol->padre->der->dato){
@@ -249,6 +257,10 @@ void eliminarNodo(Nodo *nodoEliminar){
     }
     else if(nodoEliminar->der){ //Si tiene hijo der
         reemplazar(nodoEliminar,nodoEliminar->der);
+        destruirNodo(nodoEliminar);
+    }
+    else{//Si un nodo no tiene hijos entonces es una hoja
+        reemplazar(nodoEliminar, NULL);
         destruirNodo(nodoEliminar);
     }
 }
